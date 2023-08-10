@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block title %}
+    About page
+{% endblock %}
+
+{% block content %}
+
+  <style>
+        	a {
+		color: #fff;
+		text-decoration: none;
+	}
+
+    
+    section {
+      padding: 20px;
+      text-align: center;
+    }
+    
+    footer {
+      background-color: #333;
+      color: #fff;
+      padding: 10px;
+      text-align: center;
+    }
+    header {
+      background-color: #333;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+    
+    h1 {
+      margin: 0;
+    }
+    
+  </style>
+   <header>
+    <h1><a href="{% url 'home' %}">Texnoshop</a></h1>
+    <p>Your destination for all things technology</p>
+  </header>
+  
+  <section>
+    <h2>About Us</h2>
+    <p>Texnoshop is a leading online destination for tech enthusiasts. Our mission is to provide high-quality products, exceptional customer service, and expert guidance to help you make the most of the digital world.</p>
+    <p>With a wide selection of cutting-edge tech products, ranging from smartphones and laptops to smart home devices and gaming consoles, we ensure that you have access to the latest models from top brands.</p>
+    <p>Our team of tech-savvy experts is always available to assist you, whether you have questions about a product, need recommendations, or require technical support. We are dedicated to delivering exceptional service throughout your shopping journey.</p>
+    <p>At Texnoshop, we believe in empowering our customers with knowledge. That's why we provide a wealth of technology resources, including informative blog articles, buying guides, product reviews, and troubleshooting tips.</p>
+    <p>Join the Texnoshop community today and let us help you stay connected, informed, and inspired in the ever-evolving world of technology.</p>
+  </section>
+  
+  <footer>
+    <p>&copy; 2023 Texnoshop. All rights reserved.</p>
+  </footer>
+
+{% endblock %}

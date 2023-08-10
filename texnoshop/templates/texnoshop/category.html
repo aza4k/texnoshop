@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block title %}
+    Categories - TexnoShop
+{% endblock %}
+
+{% block content %}
+<header>
+    <h1><a href="{% url 'home' %}">Texnoshop</a></h1>
+    <p>Your destination for all things technology</p>
+</header>
+
+
+<main>
+	<section class="product">
+		{% for product in products %}
+		<div class="card">
+			<div class="imgBox">
+			  {% if product.image %}
+			      <img src="{{ product.image.url }}" alt="HyperX" class="mouse">
+			  {% else %}
+			      <img src="{% static 'path/to/default/image.jpg' %}" alt="HyperX" class="mouse">
+			  {% endif %}
+			</div>
+		  
+			<div class="contentBox">
+			  <h3>{{ product.title }}</h3>
+			  <h2 class="price">{{ product.price }}$</h2>
+			  <a href="{% url 'detail' product.id %}" class="buy">Open</a>
+			</div>
+		</div>
+		{% endfor %}
+	</section>
+</main>
+
+
+
+
+
+
+<style></style>
+
+
+{% endblock %}

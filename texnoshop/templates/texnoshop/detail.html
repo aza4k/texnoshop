@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    Product page
+{% endblock %}
+
+{% block content %}
+<header>
+  <h1><a href="{% url 'home' %}">Texnoshop</a></h1>
+  <p>Your destination for all things technology</p>
+</header>
+
+<div class="container">
+  <div class="details">
+      <div class="foto">
+          <img src="{{ product.image.url }}" alt="image" class="mouse">
+      </div>
+      <div class="info">
+          <h1>{{ product.title }}</h1>
+          <div class="description">
+              <h2><span>Price:</span> {{ product.price }}$</h2>
+              <h2>Description:</h2>
+              <p class="dsc">{{ product.description }}</p>
+              <button>Add to Card</button>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+
+<style>
+  span{
+    color: #ffce00;
+  }
+
+a {
+		color: #fff;
+		text-decoration: none;
+	}
+
+
+header {
+      background-color: #333;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+    
+    h1 {
+      margin: 0;
+    }
+    
+
+
+
+.container {
+    padding-top: 100px; /* Add top padding */
+    margin-left: 20%;
+}
+
+.details {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-gap: 20px;
+}
+
+.foto > img {
+height: 250px;
+width: auto;}
+
+.description > .dsc {
+  border: 1px solid #ffce00;
+  height: 120px;
+  width: 500px;
+}
+
+
+.dsc {
+  padding-top: 10px;
+  padding-left: 10px;
+}
+
+button {
+  background-color: #191919;
+  color: white;
+  font-size: 20px;
+  padding: 10px;
+  border-radius: 30px;
+}
+
+button:hover {
+  background-color: #ffce00;
+  color: #000;
+  transition: 0.5s;
+}
+
+</style>
+
+{% endblock %}
