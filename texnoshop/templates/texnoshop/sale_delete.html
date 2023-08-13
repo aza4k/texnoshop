@@ -2,39 +2,19 @@
 {% load static %}
 
 {% block title %}
-    Product page
+    Delete Product
 {% endblock %}
 
 {% block content %}
-<header>
-  <h1><a href="{% url 'home' %}" class="logo">Texnoshop</a></h1>
-  <p>Your destination for all things technology</p>
-</header>
-
-<div class="container">
-  <div class="details">
-      <div class="foto">
-          <img src="{{ product.image.url }}" alt="image" class="mouse">
-      </div>
-      <div class="info">
-          <h1>{{ product.title }}</h1>
-          <div class="description">
-              <h2><span>Price:</span> {{ product.price }}$</h2>
-              <h2>Description:</h2>
-              <p class="dsc">{{ product.description }}</p>
-              <button>Add to Card</button>
-              <a href="{% url 'sale_delete' product_id=product.id %}">Delete Product</a>
-              <a href="{% url 'sale_update' product.id %}">Edit Product</a>
-            </div>
-
-      </div>
-  </div>
-</div>
-
-
-
-<style>
-  span{
+    <h1>Delete Product: {{ product.title }}</h1>
+    <p>Are you sure you want to delete this product?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Yes, Delete</button>
+        <a href="{% url 'products' %}">Cancel</a>
+    </form>
+    <style>
+          span{
     color: #ffce00;
   }
 
@@ -107,6 +87,5 @@ button:hover {
   transition: 0.5s;
 }
 
-</style>
-
-{% endblock %}
+    </style>
+    {% endblock %}

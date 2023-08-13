@@ -2,39 +2,23 @@
 {% load static %}
 
 {% block title %}
-    Product page
+    Update Product
 {% endblock %}
 
 {% block content %}
-<header>
-  <h1><a href="{% url 'home' %}" class="logo">Texnoshop</a></h1>
-  <p>Your destination for all things technology</p>
-</header>
-
-<div class="container">
-  <div class="details">
-      <div class="foto">
-          <img src="{{ product.image.url }}" alt="image" class="mouse">
-      </div>
-      <div class="info">
-          <h1>{{ product.title }}</h1>
-          <div class="description">
-              <h2><span>Price:</span> {{ product.price }}$</h2>
-              <h2>Description:</h2>
-              <p class="dsc">{{ product.description }}</p>
-              <button>Add to Card</button>
-              <a href="{% url 'sale_delete' product_id=product.id %}">Delete Product</a>
-              <a href="{% url 'sale_update' product.id %}">Edit Product</a>
-            </div>
-
-      </div>
-  </div>
+<div>
+    <h1>Update Product: {{ product.title }}</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save</button>
+    </form>
 </div>
-
-
-
-<style>
-  span{
+    <style>   
+div{
+    margin-left: 50px;
+}
+      span{
     color: #ffce00;
   }
 
@@ -45,7 +29,7 @@
 a {
   color: #15fc00;
 	text-decoration: none;
-  font-size: 28px;
+  font-size: 16px;
 }
 a:hover{
   color: red;
@@ -107,6 +91,5 @@ button:hover {
   transition: 0.5s;
 }
 
-</style>
-
+    </style>
 {% endblock %}

@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Product, Category
+from .forms import ProductForm, ProductUpdateForm
 
 def home(request):
     categories = Category.objects.all()
@@ -25,6 +26,7 @@ def category_products(request, category_id):
     return render(request, 'texnoshop/category.html', context)
 
 
+
 def detail(request, pk):
     product = Product.objects.get(id=pk)
     context = {
@@ -37,3 +39,48 @@ def about(request):
 
 def base(request):
     return render(request, 'texnoshop/base.html')
+
+
+def sale_create(request):
+    if request.method == 'POST':
+        form = ProductForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('products')
+    else:
+        form = ProductForm()
+    
+    context = {
+        'form': form
+    }
+    return render(request, 'texnoshop/create.html', context)
+
+def sale_delete(request, product_id):
+    product = Product.objects.get(id=product_id)
+
+    if request.method == 'POST':
+        product.delete()
+        return redirect('products')  # Redirect to the list of products
+
+    context = {
+        'product': product
+    }
+    return render(request, 'texnoshop/sale_delete.html', context)
+
+
+def sale_update(request, product_id):
+    product = Product.objects.get(id=product_id)
+
+    if request.method == 'POST':
+        form = ProductUpdateForm(request.POST, request.FILES, instance=product)
+        if form.is_valid():
+            form.save()
+            return redirect('products')
+    else:
+        form = ProductUpdateForm(instance=product)
+
+    context = {
+        'form': form,
+        'product': product
+    }
+    return render(request, 'texnoshop/sale_update.html', context)
